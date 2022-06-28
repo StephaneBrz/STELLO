@@ -53,12 +53,12 @@ class ProjectController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::with('category')->find($id);
+        // $project = Project::with('category')->find($id);
 
         // coté front, je vais pouvoir utiliser une variable $post
-        return view('projects.show', compact('project'));
+        return view("projects.show", compact("project"));
     }
 
     /**
@@ -67,9 +67,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -81,7 +81,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+        $project->name = $request->input('name');
+        $project->save();
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -92,6 +96,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        $project->delete();
+
+        return redirect()->route('projects.index');
     }
 }

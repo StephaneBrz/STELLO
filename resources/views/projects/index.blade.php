@@ -1,5 +1,5 @@
-@extends ('layout');
-@section('contenu');
+@extends ('layout')
+@section('contenu')
 
 <div class="container">
     <div class="row">
