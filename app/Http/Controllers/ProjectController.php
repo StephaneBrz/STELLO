@@ -39,12 +39,12 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:30',
-            'img' => 'image|max:1024',
+            // 'img' => 'image|max:1024',
         ]);
-        $img_road = $request->image->store("projects");
+        // $img_road = $request->image->store("projects");
         $project = [
             'name' => $request->input('name'),
-            'img' => $request->input('img'),
+            // 'img' => $request->input('img'),
         ];
 
         Project::create($project);
