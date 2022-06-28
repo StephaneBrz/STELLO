@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('projects', ProjectController::class);
+
+Route::resource('categories', CategoryController::class);
