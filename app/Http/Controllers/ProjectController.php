@@ -55,7 +55,10 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        //
+        $project = Project::with('category')->find($id);
+
+        // coté front, je vais pouvoir utiliser une variable $post
+        return view('projects.show', compact('project'));
     }
 
     /**

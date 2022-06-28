@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="row">
-        <a class="btn btn-primary col-4" href="{{ route('projects.create') }}">Créer un project</a>
+        <a class="btn btn-primary col-4" href="{{ route('projects.create') }}">Créer un projet</a>
     </div>
     <br>
     <div class="row">
@@ -21,14 +21,14 @@
                     <th>{{ $project->id }}</th>
                     <td>{{ $project->name }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('projects.show', $project->id) }}">Voir le post</a>
-                        <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le post</a>
+                        <a class="btn btn-primary" href="{{ route('projects.show', $project->id) }}">Voir le projet</a>
+                        <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le projet</a>
 
                         <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             
-                            <button class="btn btn-danger" type="submit">Supprimer le post</button>                    </td>
+                            <button class="btn btn-danger" type="submit">Supprimer le projet</button>                    </td>
                         </form>
                 </tr>
                 @endforeach
