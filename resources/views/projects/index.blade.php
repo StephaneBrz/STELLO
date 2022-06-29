@@ -10,15 +10,13 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Titre</th>
+                <th scope="col">Mes Projets</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $project)
                 <tr>
-                    <th>{{ $project->id }}</th>
                     <td>{{ $project->name }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('projects.show', $project->id) }}">Voir le projet</a>
@@ -28,12 +26,13 @@
                             @csrf
                             @method('DELETE')
                             
-                            <button class="btn btn-danger" type="submit">Supprimer le projet</button>                    </td>
-                        </form>
+                            <button class="btn btn-danger" type="submit">Supprimer le projet</button>
+                        </form>                    
+                    </td>       
                 </tr>
                 @endforeach
             </tbody>
-          </table>
+        </table>
     </div>
 </div>
 

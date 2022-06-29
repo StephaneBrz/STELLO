@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
-use App\Models\Task; 
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -82,7 +82,7 @@ class TaskController extends Controller
         $task->name = $request->input('name');
         $task->save();
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('projects.show', $task->project_id);
     }
 
     /**
