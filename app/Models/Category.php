@@ -10,8 +10,13 @@ class Category extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    // public function tasks()
-    // {
-    //     return $this->hasMany(Task::class);
-    // }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }
