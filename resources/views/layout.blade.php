@@ -15,7 +15,7 @@
               <a class="nav-link active" aria-current="page" href="{{route('projects.index')}}">STELLO</a>
             </li>
             <li class="nav-item">
-              <p class="nav-link" href="#">Création de projet</p>
+              <p class="nav-link" href="#">MES PROJETS</p>
             </li>
 
             @auth

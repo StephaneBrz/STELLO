@@ -3,17 +3,47 @@
 @section('contenu')
 
 <div class="container">
-    <div class="row">
-        <a href="{{ route('categories.index') }}" class="btn btn-secondary">Retour</a>
-    </div>
-    <div class="row">
-        <form action="{{ route('categories.store') }}" method="POST">
-            @csrf
 
-            <input class="form-control" type="text" name="name" placeholder="Nom du projet...">
+    <div class="row">
+        <h2>{{ $project->name }} <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a></h2>
+       {{-- Lien vers édition catégorie --}}
+        <a href="{{ route('categories.update') }}" class="btn btn-secondary">
+             <button class="btn btn-danger" type="submit">Ajouter une catégorie</button></a>
+        {{-- Lien vers édition tâche --}}
+        <a href="{{ route('tasks.update', $project->id) }}" class="btn btn-secondary">
+            <button class="btn btn-danger" type="submit">Ajouter une tâche</button></a>
 
-            <button type="submit" class="btn btn-success">Créer la catégorie</button>
-        </form>
+       <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-danger" type="submit">Supprimer le projet</button> 
+    </form>
+    <hr>
+<a href="{{ route('projects.index') }}" class="btn btn-secondary">Retour à la liste</a>
+
+
+                    <div class="container">
+                        <div class="row align-items-start">
+                        @foreach ($project->categories as $category)
+                          <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>{{$category->name}}</h2>
+                                </div>
+                                <div class="card-body">
+                                    <ul>@foreach ($category->tasks as $task)
+                                        <button href="" class="btn btn-danger" type="submit">Modifier</button>
+                                        <li class="card-text">
+                                            {{$task->name}}
+                                            <button class="btn btn-danger" type="submit">Ajouter une catégorie</button>
+                                            <button class="btn btn-danger" type="submit">Ajouter une tâche</button>
+                                            <button class="btn btn-danger" type="submit">Supprimer la tâche></label></button>
+                                        </li> 
+                                        @endforeach
+                                    </ul>
+                                </div>
+                              </div>
+                            @endforeach
     </div>
 </div>
 
