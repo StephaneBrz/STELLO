@@ -12,7 +12,7 @@
     <header class="container mb-5">
         <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">STELLO</a>
+              <a class="nav-link active" aria-current="page" href="{{route('projects.index')}}">STELLO</a>
             </li>
             <li class="nav-item">
               <p class="nav-link" href="#">Création de projet</p>
