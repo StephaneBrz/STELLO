@@ -5,7 +5,7 @@
 <div class="container">
 
     <div class="row">
-        <h2>{{ $project->name }}</h2>
+        <h1>{{ $project->name }}</h1>
         <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
         <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
             @csrf
@@ -31,13 +31,17 @@
                                     <ul>@foreach ($category->tasks as $task)
                                         <li class="card-text">
                                             {{$task->name}}
-                                         
+                                            <a class="btn btn-primary col-4" href="{{ route('tasks.create') }}">Créer une tâches</a>
+
                                              <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-secondary"
-                                             class="btn btn-danger" type="submit">Modifier
-                                        </a>
-                                         {{-- <a href="{{ route('projects.index') }}" class="btn btn-secondary" --}}
-                                         <button class="btn btn-danger" type="submit">Supprimer</button></a>
-                                         {{-- </a> --}}   
+                                             class="btn btn-danger" type="submit">Modifier</a>
+
+                                             <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit">Supprimer la tâche</button> 
+                                            </form>
+                                         
                                         </li> 
                                         @endforeach
                                     </ul>
@@ -47,9 +51,7 @@
 
 
 
-
-                    <td>
-                    </td>
+                    
                 </tr>
             </tbody>
           </table>
