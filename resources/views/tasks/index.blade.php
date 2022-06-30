@@ -12,7 +12,7 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Titre</th>
-                <th>Action</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -20,15 +20,17 @@
                 <tr>
                     <th>{{ $task->id }}</th>
                     <td>{{ $task->name }}</td>
-                    <td>
-                        <a class="btn btn-primary" href="{{ route('tasks.show', $task->id) }}">Voir la tâche</a>
-                        <a class="btn btn-warning" href="{{ route('tasks.edit', $task->id) }}">Modifier la tâche</a>
+                    <td style="display:flex">
+                           {{-- Bouton Voir la catégorie --}}
+                        <a class="btn btn-primary" href="{{ route('tasks.show', $task->id) }}"><i class="fa-solid fa-eye"></i></a>
+                            {{-- Bouton modifier FontAwesome --}}
+                        <a class="btn btn-warning" href="{{ route('tasks.edit', $task->id) }}"><i class="fa-solid fa-pen"></i></a>
 
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            
-                            <button class="btn btn-danger" type="submit">Supprimer la tâche</button>                    </td>
+                             {{-- Bouton supprimer FontAwesome --}}
+                            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    </td>
                         </form>
                 </tr>
                 @endforeach

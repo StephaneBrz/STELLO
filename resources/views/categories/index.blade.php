@@ -21,15 +21,18 @@
                     <th>{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('categories.show', $category->id) }}">Voir la catégorie</a>
-                        <a class="btn btn-warning" href="{{ route('categories.edit', $category->id) }}">Modifier la catégorie</a>
-
+                    <div style="display:flex">
+                        {{-- Bouton Voir la catégorie --}}
+                        <a class="btn btn-primary" href="{{ route('categories.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a>
+                        {{-- Bouton Modifier la catégorie --}}
+                        <a class="btn btn-warning" href="{{ route('categories.edit', $category->id) }}"><i class="fa-solid fa-pen"></i></a>
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            
-                            <button class="btn btn-danger" type="submit">Supprimer la catégorie</button>                    </td>
+                            {{-- Bouton Supprimer la catégorie --}}
+                            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    </td>
                         </form>
+                    </div>
                 </tr>
                 @endforeach
             </tbody>
