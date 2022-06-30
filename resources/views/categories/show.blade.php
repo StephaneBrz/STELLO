@@ -19,7 +19,7 @@
                     <td>{{ $category->name }}</td>
                     <td>
                         <a href="{{ route('categories.index') }}" class="btn btn-secondary">Retour</a>
-                        <a class="btn btn-warning" href="{{ route('categories.edit', $category->id) }}">Modifier le projet</a>
+                        <a class="btn btn-warning" href="{{ route('categories.edit', $category->id) }}">Modifier la catégorie</a>
 
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @csrf

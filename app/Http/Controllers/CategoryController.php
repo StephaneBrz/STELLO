@@ -46,11 +46,11 @@ class CategoryController extends Controller
 
         Category::create($category);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('projects.index');
     }
 
 
-    public function show(Category $category)
+    public function show(Category $category,)
     {
         // $category = Project::with('category')->find($id);
 

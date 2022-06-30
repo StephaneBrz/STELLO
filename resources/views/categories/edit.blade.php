@@ -12,7 +12,7 @@
             @method('PUT')
 
             <input class="form-control" type="text" name="name" placeholder="Titre..." value="{{ $category->name ?? '' }}">
-            <button type="submit" class="btn btn-success">Modifier</button>
+            <button type="submit" class="btn btn-success">Valider</button>
         </form>
     </div>
 </div>
