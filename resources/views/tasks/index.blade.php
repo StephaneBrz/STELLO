@@ -17,25 +17,26 @@
             </thead>
             <tbody>
                 @foreach ($tasks as $task)
-                <tr>
-                    <th>{{ $task->id }}</th>
-                    <td>{{ $task->name }}</td>
-                    <td style="display:flex">
-                           {{-- Bouton Voir la catégorie --}}
-                        <a class="btn btn-primary" href="{{ route('tasks.show', $task->id) }}"><i class="fa-solid fa-eye"></i></a>
-                            {{-- Bouton modifier FontAwesome --}}
-                        <a class="btn btn-warning" href="{{ route('tasks.edit', $task->id) }}"><i class="fa-solid fa-pen"></i></a>
+                    <tr>
+                        <th>{{ $task->id }}</th>
+                        <td>{{ $task->name }}</td>
+                        <td style="display:flex">
+                                {{-- Bouton Voir la catégorie --}}
+                            <a class="btn btn-primary" href="{{ route('tasks.show', $task->id) }}"><i class="fa-solid fa-eye"></i></a>
+                                {{-- Bouton modifier FontAwesome --}}
+                            <a class="btn btn-warning" href="{{ route('tasks.edit', $task->id) }}"><i class="fa-solid fa-pen"></i></a>
 
-                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                             {{-- Bouton supprimer FontAwesome --}}
-                            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    </td>
-                        </form>
-                </tr>
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                {{-- Bouton supprimer FontAwesome --}}
+                                    <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    
+                                </form>
+                        </td>  
+                    </tr>
                 @endforeach
             </tbody>
-          </table>
+        </table>
     </div>
 </div>
 
