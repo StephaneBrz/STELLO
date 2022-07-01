@@ -11,7 +11,7 @@
         <h2>Projet: {{$project->name}}</h2>
         <div style="display:flex">
             <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
-            <a class="btn btn-warning" href="{{ route('categories.create',) }}">créer une catégorie
+            <a class="btn btn-warning" href="{{ route('categories.create',$project->id) }}">créer une catégorie
             </a>
              
             <form action="{{ route('projects.destroy', $project->id) }}" method="POST">

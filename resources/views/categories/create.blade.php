@@ -7,7 +7,7 @@
         <a href="{{ route('projects.index') }}" class="btn btn-secondary">Retour</a>
     </div>
     <div class="row">
-        <form action="{{ route('categories.store') }}" method="POST">
+        <form action="{{ route('categories.store', $project->id) }}" method="POST">
             @csrf
             <input class="form-control" type="text" name="name" placeholder="Nom de la catégorie...">
             <input type="hidden" name="project_id" value="{{$project->id}}">

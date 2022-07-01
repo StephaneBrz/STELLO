@@ -19,10 +19,10 @@ class CategoryController extends Controller
     }
 
     // Créer une nouvelle Categorie
-    public function create()
+    public function create($id)
     {
-        $project_id = Project::all();
-        return view('categories.create', compact('project_id'));
+        $project = Project::findOrFail($id);
+        return view('categories.create', compact('project'));
     }
 
     // Enregistrer une nouvelle Categorie
