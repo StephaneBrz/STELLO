@@ -11,7 +11,7 @@
         <h2>Projet: {{$project->name}}</h2>
         <div style="display:flex">
             <a class="btn btn-success" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
-            <a class="btn btn-primary" href="{{ route('categories.create',) }}">créer une catégorie
+            <a class="btn btn-primary" href="{{ route('categories.create',$project->id) }}">Créer une catégorie
             </a>
              
             <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
@@ -31,18 +31,20 @@
                         <div class="card-header">
                             <h2>{{$category->name}}</h2>
                         </div>
+                        <hr>
+                        {{-- Bouton Ajouter --}}
+                        <a class="btn btn-primary" href="{{ route('tasks.create', [$project->id, $category->id]) }}"><i>Ajouter une tâche</i></a>
                     </div>
                     <div class="card-body">
                         
                         <ul>@foreach ($category->tasks as $task)
                                 <li class="card-text" style="display:flex">
                                     {{$task->name}}
-                                    {{-- Bouton Ajouter --}}
-                                    <a class="btn btn-primary" href="{{ route('tasks.create') }}"><i class="fa-solid fa-plus"></i></a>
+                                    
                                     {{-- Bouton Modifier --}}
-                                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-success" type="submit"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="{{ route('tasks.edit', [$project->id, $category->id, $task->id]) }}" class="btn btn-success" type="submit"><i class="fa-solid fa-pen"></i></a>
                                 
-                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline">
+                                    <form action="{{ route('tasks.destroy', [$project->id, $category->id, $task->id]) }}" method="POST" style="display: inline">
                                         @csrf
                                         @method('DELETE')
                                     {{-- Bouton Supprimer --}}        

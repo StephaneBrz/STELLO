@@ -26,7 +26,7 @@ Route::resource('projects', ProjectController::class);
 
 Route::resource('projects/{id}/categories', CategoryController::class);
 
-Route::resource('tasks', TaskController::class);
+Route::resource('projects/{project_id}/categories/{category_id}/tasks', TaskController::class);
 
 Route::resource('users', UserController::class);
 
