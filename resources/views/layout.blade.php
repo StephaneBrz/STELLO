@@ -18,7 +18,10 @@
               <a class="nav-link active" aria-current="page" href="{{route('projects.index')}}">STELLO</a>
             </li>
             <li class="nav-item">
-              <p class="nav-link" href="#">MES PROJETS</p>
+              <a class="nav-link active" aria-current="page" href="{{route('projects.index')}}">MES PROJETS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{route('users.index')}}">MON PROFIL</a>
             </li>
 
             @auth

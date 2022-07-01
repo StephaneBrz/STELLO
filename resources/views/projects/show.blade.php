@@ -4,8 +4,11 @@
 
 <div class="container">
     <div class="row align-items-start">
-        
-        <h2>{{ $project->name }}</h2>
+        <div>
+            Bonjour !
+        </div>
+        <hr>
+        <h2>Projet: {{ $project->name }}</h2>
         <div style="display:flex">
         <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
              <a href="{{ route('categories.create', $project->id) }}"><button class="btn btn-danger" type="submit">Ajouter une catégorie</button></a>
@@ -14,7 +17,6 @@
                 @method('DELETE')
                 <button class="btn btn-danger" type="submit">Supprimer le projet</button> 
             </form>
-        
     </div>
         <br>
                     
@@ -51,6 +53,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <a href="{{ route('projects.index') }}" class="btn btn-secondary">Retour</a>
 </div>
 

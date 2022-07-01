@@ -5,6 +5,10 @@
 <div class="container">
 
     <div class="row">
+        <div>
+            Bonjour !
+        </div>
+        <hr>
         <form action="{{ route('projects.store') }}" method="POST">
             @csrf
 

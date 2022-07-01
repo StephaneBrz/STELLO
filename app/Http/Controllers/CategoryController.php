@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Models\Category; 
+use App\Models\Category;
+use App\Models\Project; 
 
 class CategoryController extends Controller
 {
@@ -37,16 +38,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $this->validate($request, [
             'name' => 'required|string|max:30',
         ]);
         $category = [
             'name' => $request->input('name'),
+            'project_id'=> $request->input('project_id'),
         ];
 
         Category::create($category);
 
-        return redirect()->route('projects.index');
+        return back()->withInput();
     }
 
 
