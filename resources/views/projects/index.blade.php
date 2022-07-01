@@ -19,9 +19,13 @@
                 <tr>
                     <td>{{ $project->name }}</td>
                     <td style="display:flex">
-                        <a class="btn btn-primary" href="{{ route('projects.show', $project->id) }}"><i class="fa-solid fa-eye"></i></a>
+                            {{-- Bouton voir FontAwesome --}}
+                        <a class="btn btn-primary" href="{{ route('projects.show', $project->id) }}">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
                        {{-- Bouton modifier FontAwesome --}}
                         <a href="{{ route('projects.edit', $project->id) }}"><i class="fa-solid fa-pen"></i></a>
+                    
                         <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

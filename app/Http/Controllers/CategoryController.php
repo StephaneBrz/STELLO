@@ -2,55 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Models\Category; 
+use App\Models\Category;
+use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // Afficher toutes les Categories
     public function index()
     {
         $categories = Category::all();
+        dump($categories);
         return view('categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Créer une nouvelle Categorie
     public function create()
     {
-        return view('categories.create');
+        return view('projects.show');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Enregistrer une nouvelle Categorie
     public function store(Request $request)
     {
+        // 1. La validation
         $this->validate($request, [
             'name' => 'required|string|max:30',
         ]);
-        $category = [
+
+        // 2. On upload l'image dans "/storage/categories"
+        $project_id = $request->input('project_id');
+
+        // 3. On enregistre les informations du Projet
+        Category::create([
             'name' => $request->input('name'),
-        ];
+            'project_id' => $project_id,
 
-        Category::create($category);
+        ]);
 
-        return redirect()->route('projects.index');
+        // 4. On retourne vers le Projet en cours : route("Projets.index")
+        return back()->withInput();
     }
 
-
-    public function show(Category $category,)
+    // Afficher une Categorie
+    public function show(Category $category)
     {
         // $category = Project::with('category')->find($id);
 
@@ -58,44 +56,28 @@ class CategoryController extends Controller
         return view("categories.show", compact("category"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Editer une Categorie enregistré
     public function edit(Category $category)
     {
         return view('categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Mettre à jour une Categorie
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
         $category->name = $request->input('name');
         $category->save();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('projects.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Supprimer une Categorie
     public function destroy($id)
     {
         $category = Category::find($id);
         $category->delete();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('projets.index');
     }
 }
