@@ -52,10 +52,11 @@ class ProjectController extends Controller
         return redirect()->route('projects.index');
     }
 
-    public function show(Project $project)
+    public function show($id)
     {
-        // $project = Project::with('category')->find($id);
+        $project = Project::with('categories')->find($id);
         // coté front, je vais pouvoir utiliser une variable $post
+        //dd($project);
         return view('projects.show', compact('project'));
     }
 

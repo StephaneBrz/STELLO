@@ -15,14 +15,14 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        dump($categories);
         return view('categories.index', compact('categories'));
     }
 
     // Créer une nouvelle Categorie
     public function create()
     {
-        return view('projects.show');
+        $project_id = Project::all();
+        return view('categories.create', compact('project_id'));
     }
 
     // Enregistrer une nouvelle Categorie
