@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProjectRequest;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
-use App\Models\Project;
+use App\Models\Task;
+use App\Models\User;
 
-class ProjectController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -26,7 +27,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('users.create');
     }
 
     /**
@@ -39,25 +40,27 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:30',
-            // 'img' => 'image|max:1024',
+            'email' => 'required|max:30',
+            'password'=>'required'
         ]);
-        // $img_road = $request->image->store("projects");
-        $project = [
+        $user = [
             'name' => $request->input('name'),
-            // 'img' => $request->input('img'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password')
         ];
 
-        Project::create($project);
+        User::create($user);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('users.index');
     }
 
-    public function show($id)
+
+    public function show(User $user)
     {
-        $project = Project::with('categories')->find($id);
+        // $category = Project::with('category')->find($id);
+
         // coté front, je vais pouvoir utiliser une variable $post
-        //dd($project);
-        return view('projects.show', compact('project'));
+        return view("users.show", compact("user"));
     }
 
     /**
@@ -66,9 +69,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(User $user)
     {
-        return view('projects.edit', compact('project'));
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -80,11 +83,13 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $project = Project::find($id);
-        $project->name = $request->input('name');
-        $project->save();
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
 
-        return redirect()->route('projects.show', $id);
+        return redirect()->route('users.show', $user->id);
     }
 
     /**
@@ -95,9 +100,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::find($id);
-        $project->delete();
+        $user = User::find($id);
+        $user->delete();
 
-        return redirect()->route('projects.index');
+        return redirect()->route('users.show');
     }
 }

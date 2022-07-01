@@ -4,10 +4,15 @@
 
 <div class="container">
     <div class="row align-items-start">
-        <h2>{{ $project->name }}</h2>
+        <div>
+            Bonjour !
+        </div>
+        <hr>
+        <h2>Projet: {{$project->name}}</h2>
         <div style="display:flex">
             <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
-            <a class="btn btn-warning" href="{{ route('categories.create') }}">Créer une catégorie</a>
+            <a class="btn btn-warning" href="{{ route('categories.create',) }}">créer une catégorie
+            </a>
              
             <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                 @csrf
@@ -54,6 +59,7 @@
         </div>
             
     </div>
+    <hr>
     <a href="{{ route('projects.index') }}" class="btn btn-secondary">Retour</a>
 </div>
 @endsection

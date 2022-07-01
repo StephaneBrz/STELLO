@@ -1,16 +1,24 @@
 @extends ('layout')
 @section('contenu')
 
+
 <div class="container">
     <div class="row">
+        <div>
+            Bonjour !
+        </div>
+        <hr>
         <a class="btn btn-primary col-4" href="{{ route('projects.create') }}">Créer un projet</a>
     </div>
     <br>
     <div class="row">
+        <hr>
         <table class="table">
             <thead>
               <tr>
                 <th scope="col">Mes Projets</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Tâches</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -18,6 +26,8 @@
                 @foreach ($projects as $project)
                 <tr>
                     <td>{{ $project->name }}</td>
+                    <td></td>
+                    <td></td>
                     <td style="display:flex">
                             {{-- Bouton voir FontAwesome --}}
                         <a class="btn btn-primary" href="{{ route('projects.show', $project->id) }}">
