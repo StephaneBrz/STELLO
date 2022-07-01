@@ -26,7 +26,6 @@
     <div class="container">
         <div class="row align-items-start">
             @foreach ($project->categories as $category)
-                <h2>{{$category->name}}</h2>
                 <div class="col">
                     <div class="card">
                         <div class="card-header">

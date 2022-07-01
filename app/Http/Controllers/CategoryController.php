@@ -78,6 +78,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect()->route('projets.index');
+        return redirect()->route('projects.index');
     }
 }
