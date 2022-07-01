@@ -7,7 +7,7 @@
         <h2>{{ $project->name }}</h2>
         <div style="display:flex">
             <a class="btn btn-warning" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
-            <a class="btn btn-warning" href="{{ route('categories.create') }}">créer un projet</a>
+            <a class="btn btn-warning" href="{{ route('categories.create') }}">Créer une catégorie</a>
              
             <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                 @csrf
@@ -21,7 +21,6 @@
     <div class="container">
         <div class="row align-items-start">
             @foreach ($project->categories as $category)
-                <h2>{{$category->name}}</h2>
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
