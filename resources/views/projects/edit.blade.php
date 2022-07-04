@@ -18,7 +18,15 @@
             <br>
             <button type="submit" class="btn btn-success">Valider</button>
         </form>
+        <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data" >
 
+            @endif
+        
+                <!-- Le token CSRF -->
+                @csrf
+			<span>Couverture actuelle</span><br/>
+			<img src="{{ asset('storage/'.$project->img) }}" alt="image de couverture actuelle" style="max-height: 200px;" >
+        </form>
     </div>
     <br>
     <div class="row">

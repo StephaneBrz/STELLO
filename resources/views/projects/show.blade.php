@@ -9,6 +9,7 @@
         </div>
         <hr>
         <h2>Projet: {{$project->name}}</h2>
+        <img src="{{ asset('storage/'.$project->img) }}" alt="Image de couverture" style="max-width: 300px;">
         <div style="display:flex">
             <a class="btn btn-success" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
             <a class="btn btn-primary" href="{{ route('categories.create',) }}">créer une catégorie

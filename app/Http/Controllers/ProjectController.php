@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Project;
+
 
 class ProjectController extends Controller
 {
@@ -37,17 +40,21 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required|string|max:30',
-            // 'img' => 'image|max:1024',
+            'img' => 'image|required',
         ]);
-        // $img_road = $request->image->store("projects");
-        $project = [
-            'name' => $request->input('name'),
-            // 'img' => $request->input('img'),
-        ];
 
-        Project::create($project);
+        $img_road = $request->img->store("projects");
+
+
+
+        Project::create([
+            'user_id' => Auth::user()->id,
+            'name' => $request->input('name'),
+            'img' => $img_road,
+        ]);
 
         return redirect()->route('projects.index');
     }
