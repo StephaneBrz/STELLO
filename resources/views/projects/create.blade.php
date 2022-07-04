@@ -6,7 +6,7 @@
 
     <div class="row">
         <div>
-            Bonjour !
+            Bonjour {{ Auth::user()->name }}!
         </div>
         <hr>
         <form action="{{ route('projects.store') }}" method="POST">

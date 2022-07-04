@@ -3,6 +3,9 @@
 
 <div class="container">
     <div class="row">
+        <div>
+            Bonjour {{ Auth::user()->name }}!
+        </div>
         <a class="btn btn-primary col-4" href="{{ route('tasks.create') }}">Créer une tâche</a>
     </div>
     <br>

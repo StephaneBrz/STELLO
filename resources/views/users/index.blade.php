@@ -4,18 +4,16 @@
 <div class="container">
     
     <div class="row">
-        @foreach ($users as $user)
         <div>
             Bonjour {{$user->name}}!
         </div>
         <hr>
         <a class="btn btn-primary col-4" href="{{ route('users.edit', $user->id) }}">Modifier mes informations</a>
-        @endforeach
     </div>
     <br>
     <div class="row">
         <table class="table">
-            <thead>
+            <thead> 
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nom</th>
@@ -25,7 +23,6 @@
               </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
                 <tr>
                     <th>{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
@@ -42,7 +39,6 @@
                             <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    </td>
                         </form>
                 </tr>
-                @endforeach
             </tbody>
           </table>
           <a href="{{ route('projects.index') }}" class="btn btn-secondary">Retour</a>

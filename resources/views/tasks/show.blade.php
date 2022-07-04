@@ -5,6 +5,9 @@
 <div class="container">
 
     <div class="row">
+        <div>
+            Bonjour {{ Auth::user()->name }}!
+        </div>
         <table class="table">
             <thead>
               <tr>

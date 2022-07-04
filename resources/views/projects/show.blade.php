@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row align-items-start">
         <div>
-            Bonjour !
+            Bonjour {{ Auth::user()->name }}!
         </div>
         <hr>
         <h2>Projet: {{$project->name}}</h2>

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div>
-            Bonjour !
+            Bonjour {{ Auth::user()->name }}!
         </div>
         <hr>
         <a class="btn btn-primary col-4" href="{{ route('projects.create') }}">Créer un projet</a>

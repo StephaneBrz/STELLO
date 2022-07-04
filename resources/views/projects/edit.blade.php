@@ -6,7 +6,7 @@
 
     <div class="row">
         <div>
-            Bonjour !
+            Bonjour {{ Auth::user()->name }}!
         </div>
         <hr>
         <h2>Nom du projet:</h2>

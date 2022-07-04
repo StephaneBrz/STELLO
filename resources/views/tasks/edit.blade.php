@@ -4,6 +4,9 @@
 
 <div class="container">
     <div class="row">
+        <div>
+            Bonjour {{ Auth::user()->name }}!
+        </div>
         <a href="{{ route('tasks.index') }}" class="btn btn-secondary">Retour</a>
     </div>
     <div class="row">
