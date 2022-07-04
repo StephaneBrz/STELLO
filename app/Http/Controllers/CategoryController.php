@@ -26,7 +26,7 @@ class CategoryController extends Controller
     }
 
     // Enregistrer une nouvelle Categorie
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // 1. La validation
         $this->validate($request, [
@@ -44,7 +44,8 @@ class CategoryController extends Controller
         ]);
 
         // 4. On retourne vers le Projet en cours : route("Projets.index")
-        return back()->withInput();
+        $project = Project::findOrFail($id);
+        return view('projects.show', compact('project'));
     }
 
     // Afficher une Categorie

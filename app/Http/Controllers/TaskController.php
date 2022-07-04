@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\Category;
+use App\Models\Project;
 
 class TaskController extends Controller
 {
@@ -24,9 +27,34 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($project_id, $category_id)
     {
-        return view('tasks.create');
+        $category = Category::findOrFail($category_id);
+        $project = Project::findOrFail($project_id);
+        return view('tasks.create', compact('category', 'project'));
+    }
+
+    // Enregistrer une nouvelle Categorie
+    public function store(Request $request, $project_id, $category_id)
+    {
+        // 1. La validation
+        $this->validate($request, [
+            'name' => 'required|string|max:30',
+        ]);
+
+        // 2. On upload l'image dans "/storage/categories"
+        $category_id = $request->input('category_id');
+
+        // 3. On enregistre les informations du Projet
+        Task::create([
+            'name' => $request->input('name'),
+            'category_id' => $category_id,
+
+        ]);
+
+        // 4. On retourne vers le Projet en cours : route("Projets.index")
+        $category = Category::findOrFail($category_id);
+        return view('projects.show', compact('category'));
     }
 
     /**
@@ -35,19 +63,6 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required|string|max:30',
-        ]);
-        $task = [
-            'name' => $request->input('name'),
-        ];
-
-        Task::create($task);
-
-        return redirect()->route('tasks.index');
-    }
 
 
     public function show(Task $task)

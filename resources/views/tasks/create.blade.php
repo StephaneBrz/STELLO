@@ -3,17 +3,25 @@
 @section('contenu')
 
 <div class="container">
+   
     <div class="row">
-        <a href="{{ route('tasks.index') }}" class="btn btn-secondary">Retour</a>
-    </div>
-    <div class="row">
-        <form action="{{ route('tasks.store') }}" method="POST">
+        <div>
+            Bonjour !
+        </div>
+        <hr>
+        <h2>Catégorie: </h2>
+        <form action="{{ route('tasks.store', [$project->id, $category->id]) }}" method="POST">
             @csrf
-
             <input class="form-control" type="text" name="name" placeholder="Nom de la tâche...">
-
-            <button type="submit" class="btn btn-success">Créer une tâche</button>
+            <br>
+            <input type="hidden" name="category_id" value="{{$category->id}}">
+            <br>
+            <button type="submit" class="btn btn-success">Créer la tâche</button>
         </form>
+    </div>
+    <hr>
+    <div class="row">
+        <a href="{{ route('projects.show', $project->id, $category->id) }}" class="btn btn-secondary">Retour</a>
     </div>
 </div>
 
