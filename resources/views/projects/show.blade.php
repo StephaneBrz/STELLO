@@ -1,7 +1,15 @@
+<style>
+ body {
+    background-image: url('{{asset('storage/project'.$project->img)}}')
+ }
+
+
+</style>
+
 @extends('layout')
 
 @section('contenu')
-
+<body style="background-image: url('{{$project->img}}')">
 <div class="container">
     <div class="row align-items-start">
         <div>
@@ -9,7 +17,7 @@
         </div>
         <hr>
         <h2>Projet: {{$project->name}}</h2>
-        <img src="{{ asset('storage/'.$project->img) }}" alt="Image de couverture" style="max-width: 300px;">
+       
         <div style="display:flex">
             <a class="btn btn-success" href="{{ route('projects.edit', $project->id) }}">Modifier le nom du projet</a>
             <a class="btn btn-primary" href="{{ route('categories.create',$project->id) }}">Créer une catégorie
@@ -64,4 +72,5 @@
     <hr>
     <a href="{{ route('projects.index') }}" class="btn btn-secondary">Retour</a>
 </div>
+</body>
 @endsection
