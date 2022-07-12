@@ -2,18 +2,18 @@
 @section('contenu')
 
 <div class="container">
-    
+
     <div class="row">
         <div>
-            Bonjour {{$user->name}}!
+            Bonjour {{$user->name ?? ''}}!
         </div>
         <hr>
-        <a class="btn btn-primary col-4" href="{{ route('users.edit', $user->id) }}">Modifier mes informations</a>
+        <a class="btn btn-primary col-4" href="{{ route('users.edit', $user->id ?? 1) }}">Modifier mes informations</a>
     </div>
     <br>
     <div class="row">
         <table class="table">
-            <thead> 
+            <thead>
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nom</th>
@@ -24,20 +24,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>{{ $user->id }}</th>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->password }}</td>
+                    <th>{{ $user->id ?? '' }}</th>
+                    <td>{{ $user->name ?? '' }}</td>
+                    <td>{{ $user->email ?? '' }}</td>
+                    <td>{{ $user->password ?? '' }}</td>
                     <td style="display:flex">
                             {{-- Bouton modifier FontAwesome --}}
-                        <a class="btn btn-warning" href="{{ route('users.edit', $user->id) }}"><i class="fa-solid fa-pen"></i></a>
+                        <a class="btn btn-warning" href="{{ route('users.edit', $user->id ?? 1) }}"><i class="fa-solid fa-pen"></i></a>
 
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                        <form action="{{ route('users.destroy', $user->id ?? 1) }}" method="POST">
                             @csrf
                             @method('DELETE')
                              {{-- Bouton supprimer FontAwesome --}}
-                            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    </td>
+                            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
+                    </td>
                 </tr>
             </tbody>
           </table>

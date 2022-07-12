@@ -1,3 +1,4 @@
+{{-- TODO: ce layout n'a pas l'air d'être utilisé, donc à supprimer car vous en avez un 2e --}}
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

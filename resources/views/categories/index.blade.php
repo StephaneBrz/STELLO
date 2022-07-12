@@ -31,9 +31,9 @@
                             @method('DELETE')
                             {{-- Bouton Supprimer la catégorie --}}
                             <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i></button>
-                    </td>
                         </form>
                     </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

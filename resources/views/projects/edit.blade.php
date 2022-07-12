@@ -19,9 +19,6 @@
             <button type="submit" class="btn btn-success">Valider</button>
         </form>
         <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data" >
-
-            @endif
-        
                 <!-- Le token CSRF -->
                 @csrf
 			<span>Couverture actuelle</span><br/>
