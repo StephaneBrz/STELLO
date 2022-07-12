@@ -24,6 +24,10 @@ Route::get('/', function () {
 
 Route::resource('projects', ProjectController::class);
 
+/**
+ * Attention pour les 3 routes suivantes, si vous faites des routes spécifiques il ne faut pas utiliser
+ * de ressource, il faut simplement mettre Route::get(...) ou autre
+ */
 Route::resource('projects/{id}/categories', CategoryController::class);
 
 Route::resource('projects/{project_id}/categories/{category_id}/tasks', TaskController::class);
